@@ -1,0 +1,19 @@
+button {
+    color: white;
+    padding: 4px;
+    margin: 4px;
+    border-radius: 4px;
+    border: solid 2px black;
+    &.primary {
+      background-color: red;
+    }
+    
+    &.secondary {
+      background-color: blue;
+    }
+    
+    &.warning {
+      background-color: orange;
+    }
+  }
+  
