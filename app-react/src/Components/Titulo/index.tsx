@@ -1,8 +1,8 @@
+import StyledTitulo from "./titulo.styled";
+
 interface TituloProps{
     nome: string;
-    descricao?: string;
-    data: string;
-    children?: React.ReactNode;
+
 }
 
 // pode ser tipado de duas formas
@@ -11,14 +11,11 @@ interface TituloProps{
 //const Titulo = ({nome, descricao, data}: TituloProps) => {
 
 //complexa
-const Titulo: React.FC<TituloProps> = ({nome, descricao, data, children}) => {
+const Titulo: React.FC<TituloProps> = ({nome}) => {
     return (
-        <>
-            {children}
-            <h1>Curso de {nome}</h1>
-            <h2>Data {data}</h2>
-            <h2>Descricao {descricao}</h2>
-            
+        <>   
+            <h1>{nome}</h1>
+            <StyledTitulo>{nome}</StyledTitulo>
         </>
     );
 };

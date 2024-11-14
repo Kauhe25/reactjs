@@ -1,49 +1,51 @@
-import { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import './App.scss'
 import Titulo from './Components/Titulo'
-import Placeholder from './Components/Placeholder'
-import Botao from './Components/Botao'
+import BotaoCustom from "./Components/Botao/botao.styled";
+import MenuCustomizado from './Components/Menu/menu.styled';
+
+interface OpcaoCursoProps {
+  item: string;
+}
 
 const App = () => {
+  const [curso, setCurso] = useState("Nenhum curso selecionado");
+  const handlerCurso = (evt: React.ChangeEvent<HTMLInputElement>) => {
+    setCurso(evt.target.value)
+  }
 
-  const [numero, setNumero] = useState(0);
-  const [nome, setNome] = useState("");
+  const cursos = ["ReactJS", "NodeJS", "CSS & JS Pro"];
 
-  useEffect( () => {
-    console.log('Entrou no effect')
-  }, [numero])
+  const OpcaoCurso = ({ item }: OpcaoCursoProps) => (
+    <>
+      <label>
+        <input 
+          type="radio" 
+          name="curso" 
+          value={item} 
+          onChange={handlerCurso} 
+          checked={curso == item} 
+          />
+        {item}
+      </label>
+      <br />
+    </>
+  );
 
   return (
     <>
-    <h1>{numero}</h1>
-    <h1>Bem vindo, {nome}</h1>
-      <Titulo nome="React TSX" 
-        descricao={`Curso Introdutório ${numero} `} 
-        data='05/11/2025'>
-        <Placeholder/>
-      </Titulo>
+    <h1>Exercício</h1>
 
-      <h1>Aula 03</h1>
-      <Botao 
-        onClick={() => setNumero(numero + 1)} 
-        severity='primary' 
-        label='+1'/>
+    <Titulo nome={curso} />
 
-      <Botao 
-        onClick={() => setNumero(numero - 1)}
-        severity='secondary' 
-        label='-1'/>
-      
-      <Botao
-        label="Aviso"
-        severity="warning"
-        onClick={() => {
-          setNome("Kauhee");
-          }
-        }
-      />
+    {cursos.map((item, index) => {
+      return <OpcaoCurso item={item} key={index} />;
+    })}
 
-    </>
+    <BotaoCustom severity="danger" label="Perigosao" />
+
+    <MenuCustomizado/>
+  </>
   )
 }
 
