@@ -5,7 +5,6 @@ const MenuCustomizado = styled(MenuPersonalizado)`
         display: flex;
         justify-content: start;
         background-color: #333;
-        position: fixed;
         top: 0;
         width: 100%;
         padding: 10px 0;

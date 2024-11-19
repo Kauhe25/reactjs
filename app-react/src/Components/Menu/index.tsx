@@ -1,10 +1,15 @@
 
-const MenuPersonalizado = ({className}) => {
+import { Link } from "react-router-dom";
+
+interface ClasseMenu {
+    className?: string;
+}
+const MenuPersonalizado = ({className}: ClasseMenu) => {
     return (
         <div className={className}>
-            <a href="#">HOME</a>
-            <a href="#">Formulário</a>
-            <a href="#">Listagem</a>
+            <Link to="/">HOME</Link>
+            <Link to="/formulario">Formulário</Link>
+            <Link to="/listagem">Listagem</Link>
         </div>
     );
   };

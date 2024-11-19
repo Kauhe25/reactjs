@@ -1,8 +1,15 @@
 import React, { useState } from 'react'
 import './App.scss'
-import Titulo from './Components/Titulo'
-import BotaoCustom from "./Components/Botao/botao.styled";
 import MenuCustomizado from './Components/Menu/menu.styled';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+
+import Home from './Pages/Home';
+import FormularioCustom from './Pages/Formulario/formulario.styled';
+import ListagemCustom from './Pages/Listagem/Listagem.styled';
+import ListagemDetalhes from './Pages/ListagemDetalhes';
+
+
+
 
 interface OpcaoCursoProps {
   item: string;
@@ -34,17 +41,25 @@ const App = () => {
 
   return (
     <>
-    <h1>Exercício</h1>
+    <BrowserRouter>
+      <MenuCustomizado/>
 
-    <Titulo nome={curso} />
+      <div className="container">
+        <Routes>
+          <Route path="/" element={<Home/>} />
+          <Route path="/formulario" element={<FormularioCustom/>} />
+          
 
-    {cursos.map((item, index) => {
-      return <OpcaoCurso item={item} key={index} />;
-    })}
+          <Route path="/listagem">
+            <Route index element={<ListagemCustom />} />
+            <Route path=":id" element={<ListagemDetalhes/>} />
+          </Route>
 
-    <BotaoCustom severity="danger" label="Perigosao" />
+        </Routes>
+      </div>
 
-    <MenuCustomizado/>
+    </BrowserRouter>
+    
   </>
   )
 }
