@@ -8,33 +8,42 @@ interface ListagemProps {
   }
   
   const Listagem = ({ className }: ListagemProps) => {
+
+    const itens = [
+        {
+            id_departamento: 1,
+            nome: "Rec Humanos",
+            sigla: "RH"
+        },
+        {
+            id_departamento: 2,
+            nome: "Tecnologia",
+            sigla: "TI"
+        },
+        {
+            id_departamento: 3,
+            nome: "Almoxerifado",
+            sigla: "AL"
+        }
+    ];
+
     return (
         <div className={className}>
             <h1>Listagem</h1>
             <table>
                 <tr>
-                    <th>Nome</th>
-                    <th>Sobrenome</th>
-                    <th>Idade</th>
+                    <th>Id</th>
+                    <th>Setor</th>
+                    <th>Sigla</th>
                 </tr>
-                
-                
-                <tr>
-                    <td><Link to="111">Fulano</Link></td>
-                    <td>Silva</td>
-                    <td>16</td>
-                </tr>
-                <tr>
-                    <td><Link to="222">Beltrano</Link></td>
-                    <td>Silva</td>
-                    <td>17</td>
-                </tr>
-                <tr>
-                    <td><Link to="333">Ciclano</Link></td>
-                    <td>Silva</td>
-                    <td>18</td>
-                </tr>
-                
+
+                {itens.map((item) => (
+                    <tr>
+                        <td><Link to={`${item.id_departamento}`}>{item.id_departamento}</Link></td>
+                        <td><Link to={`${item.id_departamento}`}>{item.nome}</Link></td>
+                        <td><Link to={`${item.id_departamento}`}>{item.sigla}</Link></td>
+                    </tr>
+                ))}
             </table>
         </div>
     );

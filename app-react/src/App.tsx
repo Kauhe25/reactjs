@@ -7,6 +7,8 @@ import Home from './Pages/Home';
 import FormularioCustom from './Pages/Formulario/formulario.styled';
 import ListagemCustom from './Pages/Listagem/Listagem.styled';
 import ListagemDetalhes from './Pages/ListagemDetalhes';
+import BotaoCustom from './Components/Botao/botao.styled';
+import Botao from './Components/Botao';
 
 
 
